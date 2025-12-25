@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 8080;
 
 // Parse JSON bodies
 app.use(express.json());
-
+app.use(express.urlencoded({ extended: true }));
 // In-memory storage
 // formId -> array of submissions
 const forms = new Map();
