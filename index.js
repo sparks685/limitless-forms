@@ -34,11 +34,17 @@ app.post("/submit/:formId", (req, res) => {
 
   forms.get(formId).push(submission);
 
-  res.status(201).json({
-    success: true,
-    formId,
-    submission,
-  });
+  const redirectUrl = req.query.redirect;
+
+if (redirectUrl) {
+  return res.redirect(302, redirectUrl);
+}
+
+res.status(201).json({
+  success: true,
+  formId,
+  submission,
+});
 });
 
 /**
